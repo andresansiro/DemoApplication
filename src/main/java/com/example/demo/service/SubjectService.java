@@ -1,16 +1,16 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Subject;
-import com.example.demo.repository.SubjectRepository;
+import com.example.demo.repository.SqlSubjectRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SubjectService {
-    private final SubjectRepository repository;
+    private final SqlSubjectRepository repository;
 
-    public SubjectService(SubjectRepository repository) {
+    public SubjectService(SqlSubjectRepository repository) {
         this.repository = repository;
     }
 

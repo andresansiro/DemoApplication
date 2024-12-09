@@ -2,8 +2,9 @@ package com.example.demo.service;
 
 import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import com.example.demo.model.Subject;
-import com.example.demo.repository.SubjectRepository;
+import com.example.demo.repository.SqlSubjectRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,7 +16,7 @@ import java.util.List;
 
 class SubjectServiceTest {
     @Mock
-    private SubjectRepository repository;
+    private SqlSubjectRepository repository;
 
     @InjectMocks
     private SubjectService service;
@@ -27,8 +28,8 @@ class SubjectServiceTest {
 
     @Test
     void testFindTopSubjectsByCommonLetters_ReturnsCorrectResults() {
-        Subject subject1 = new Subject( "Kraków", "Jan Kowalski");
-        Subject subject2 = new Subject( "Warszawa", "Adam Nowak");
+        Subject subject1 = new Subject("Kraków", "Jan Kowalski");
+        Subject subject2 = new Subject("Warszawa", "Adam Nowak");
         List<Subject> mockSubjects = Arrays.asList(subject1, subject2);
 
         when(repository.findTopSubjectsByCommonLetters(2)).thenReturn(mockSubjects);

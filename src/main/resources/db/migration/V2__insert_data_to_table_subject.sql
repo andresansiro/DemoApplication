@@ -18,4 +18,6 @@ VALUES ('Matematyka Dyskretna', 'Jan Kowalski'),
        ('Bezpieczeństwo Sieci', 'Aleksandra Woźniak'),
        ('Sztuczna Inteligencja', 'Kamil Król'),
        ('Zarządzanie Projektami IT', 'Tomasz Chmielowski'),
-       ('Optymalizacja', 'Sławomir Pawlak');
+       ('Optymalizacja', 'Sławomir Pawlak'),
+       ('kokonik', 'Krak'),
+       ('kot', 'Krak');
