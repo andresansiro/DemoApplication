@@ -1,0 +1,2 @@
+ALTER TABLE subject
+    ADD COLUMN semester INT DEFAULT 1;

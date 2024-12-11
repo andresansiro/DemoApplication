@@ -28,29 +28,29 @@ class SubjectServiceTest {
 
     @Test
     void testFindTopSubjectsByCommonLetters_ReturnsCorrectResults() {
-        Subject subject1 = new Subject("Kraków", "Jan Kowalski");
-        Subject subject2 = new Subject("Warszawa", "Adam Nowak");
+        Subject subject1 = new Subject("Matematyka Finansowa", "Jan Kowalski", 1);
+        Subject subject2 = new Subject("Sieci Wirtualne", "Adam Nowak", 1);
         List<Subject> mockSubjects = Arrays.asList(subject1, subject2);
 
-        when(repository.findTopSubjectsByCommonLetters(2)).thenReturn(mockSubjects);
+        when(repository.findTopSubjectsByCommonLetters(1, 2)).thenReturn(mockSubjects);
 
-        List<Subject> result = service.findTopSubjectsByCommonLetters(2);
+        List<Subject> result = service.findTopSubjectsByCommonLetters(1, 2);
 
         assertThat(result).hasSize(2);
-        assertThat(result.get(0).getName()).isEqualTo("Kraków");
-        assertThat(result.get(1).getName()).isEqualTo("Warszawa");
+        assertThat(result.get(0).getName()).isEqualTo("Matematyka Finansowa");
+        assertThat(result.get(1).getName()).isEqualTo("Sieci Wirtualne");
 
-        verify(repository, times(1)).findTopSubjectsByCommonLetters(2);
+        verify(repository, times(1)).findTopSubjectsByCommonLetters(1, 2);
     }
 
     @Test
     void testFindTopSubjectsByCommonLetters_NoResults() {
-        when(repository.findTopSubjectsByCommonLetters(3)).thenReturn(List.of());
+        when(repository.findTopSubjectsByCommonLetters(1, 3)).thenReturn(List.of());
 
-        List<Subject> result = service.findTopSubjectsByCommonLetters(3);
+        List<Subject> result = service.findTopSubjectsByCommonLetters(1, 3);
 
         assertThat(result).isEmpty();
 
-        verify(repository, times(1)).findTopSubjectsByCommonLetters(3);
+        verify(repository, times(1)).findTopSubjectsByCommonLetters(1, 3);
     }
 }

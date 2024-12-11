@@ -13,10 +13,12 @@ public class Subject {
     private Long id;
     private String name;
     private String lecturerFullName;
+    private Integer semester;
 
-    public Subject(String name, String lecturerFullName) {
+    public Subject(String name, String lecturerFullName, Integer semester) {
         this.name = name;
         this.lecturerFullName = lecturerFullName;
+        this.semester = semester;
     }
 
     public Subject() {
@@ -28,5 +30,9 @@ public class Subject {
 
     public String getLecturerFullName() {
         return lecturerFullName;
+    }
+
+    public Integer getSemester() {
+        return semester;
     }
 }

@@ -21,7 +21,9 @@ interface SubjectRepository extends SqlSubjectRepository, JpaRepository<Subject,
      * order. If there is a tie in the score, the subjects are sorted by their name alphabetically.
      * <p>
      * The number of results returned is limited by the specified {@code limit}.
+     * The current semester {@code semester}.
      *
+     * @param semester the current semester
      * @param limit the maximum number of subjects to return
      * @return a list of {@link Subject} objects that match the criteria
      */
@@ -30,6 +32,7 @@ interface SubjectRepository extends SqlSubjectRepository, JpaRepository<Subject,
                 SELECT s.id,
                        s.name,
                        s.lecturer_full_name,
+                       s.semester,
                        SUM(
                                LEAST(
                                            LENGTH(REPLACE(LOWER(s.name), ' ', '')) - LENGTH(REPLACE(REPLACE(LOWER(s.name), ' ', ''), letter, '')),
@@ -44,9 +47,10 @@ interface SubjectRepository extends SqlSubjectRepository, JpaRepository<Subject,
             )
             SELECT *
             FROM letter_counts
+            WHERE semester = :semester
             ORDER BY lecturer_full_name_score DESC, name
             LIMIT :limit;
                 """, nativeQuery = true)
-    List<Subject> findTopSubjectsByCommonLetters(@Param("limit") int limit);
+    List<Subject> findTopSubjectsByCommonLetters(@Param("semester") int semester, @Param("limit") int limit);
 
 }

@@ -20,8 +20,8 @@ public class SubjectController {
     }
 
     @GetMapping("/top-common-letters")
-    public List<Subject> getTopSubjects(@RequestParam(defaultValue = "10") int limit) {
-        return subjectService.findTopSubjectsByCommonLetters(limit);
+    public List<Subject> getTopSubjects(@RequestParam(defaultValue = "1") int semester, @RequestParam(defaultValue = "10") int limit) {
+        return subjectService.findTopSubjectsByCommonLetters(semester, limit);
     }
 
 }

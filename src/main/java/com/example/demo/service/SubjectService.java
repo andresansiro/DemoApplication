@@ -14,7 +14,7 @@ public class SubjectService {
         this.repository = repository;
     }
 
-    public List<Subject> findTopSubjectsByCommonLetters(int limit) {
-        return repository.findTopSubjectsByCommonLetters(limit);
+    public List<Subject> findTopSubjectsByCommonLetters(int semester, int limit) {
+        return repository.findTopSubjectsByCommonLetters(semester, limit);
     }
 }

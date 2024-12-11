@@ -13,7 +13,7 @@ Docker Compose.
 - **`GET /api/subjects/top-common-letters`**: Endpoint zwracający listę przedmiotów według liczby wspólnych liter między
   nazwą przedmiotu a danymi prowadzącego.
 - Integracja z bazą danych PostgreSQL w kontenerze Docker.
-- Możliwość ustawienia limitu wyników za pomocą parametru zapytania (`limit`).
+- Możliwość ustawienia limitu wyników i wybrania semestru za pomocą parametrów zapytania (`limit`,`semester`).
 
 ---
 
@@ -46,24 +46,26 @@ Docker Compose.
 Endpoint API można przetestować, wykonując zapytanie do adresu:
 
    ```bash
-   GET http://localhost:8080/api/subjects/top-common-letters?limit=2
+   GET http://localhost:8080/api/subjects/top-common-letters?limit=2&semester=4
    ```
 
 #### Parametry:
 
 limit (opcjonalny): Liczba wyników do zwrócenia (domyślnie 10).
-
+semester (opcjonalny, domyślnie 1)
 #### Przykład odpowiedzi:
 
 ```bash
 [
   {
     "name": "Analiza Matematyczna",
-    "lecturerFullName": "Anna Nowak"
+    "lecturerFullName": "Anna Nowak",
+    "semester": 4
   },
   {
     "name": "Chemia Fizyczna",
-    "lecturerFullName": "Adam Wysocki"
+    "lecturerFullName": "Adam Wysocki",
+    "semester": 4
   }
 ]
 ```
